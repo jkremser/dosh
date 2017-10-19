@@ -8,7 +8,7 @@
     "url": "https://github.com/Jiri-Kremser/dosh"
   },
   "scripts": {
-    "test": "mocha --reporter nyan",
+    "test": "mocha --reporter spec",
     "lint": "[ -f ./node_modules/.bin/eslint ] && ./node_modules/.bin/eslint index.js lib/**.js test",
     "lint-fix": "[ -f ./node_modules/.bin/eslint ] && ./node_modules/.bin/eslint index.js --fix lib/**.js test",
     "cover": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec test/*"
@@ -45,5 +45,11 @@
   "bugs": {
     "url": "https://github.com/Jiri-Kremser/dosh/issues"
   },
-  "homepage": "https://github.com/Jiri-Kremser/dosh#readme"
+  "homepage": "https://github.com/Jiri-Kremser/dosh#readme",
+  "dependencies": {
+    "chalk": "^2.2.0",
+    "command-line-args": "^4.0.7",
+    "command-line-usage": "^4.0.1",
+    "inquirer": "^3.3.0"
+  }
 }
