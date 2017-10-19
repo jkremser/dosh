@@ -3,16 +3,46 @@
   "version": "1.0.0",
   "description": "Open shell in one of running containers",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jiri-Kremser/dosh"
+  },
   "scripts": {
     "test": "mocha --reporter nyan",
+    "lint": "[ -f ./node_modules/.bin/eslint ] && ./node_modules/.bin/eslint index.js lib/**.js test",
     "cover": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec test/*"
   },
+  "bin": {
+    "dosh": "./index.js"
+  },
+  "keywords": [
+    "docker",
+    "shell",
+    "inspect",
+    "debug"
+  ],
+  "engineStrict": true,
   "author": "Jiri Kremser",
   "license": "Apache-2.0",
+  "engines": {
+    "node": ">=4.3.2"
+  },
   "devDependencies": {
     "chai": "^4.1.2",
     "coveralls": "^3.0.0",
+    "eslint": "^3.12.2",
+    "eslint-config-airbnb-base": "^11.0.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-chai-friendly": "^0.3.6",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-node": "^5.0.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
     "istanbul": "^0.4.5",
     "mocha": "^4.0.1"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/Jiri-Kremser/dosh/issues"
+  },
+  "homepage": "https://github.com/Jiri-Kremser/dosh#readme"
 }
