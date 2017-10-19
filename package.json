@@ -1,6 +1,6 @@
 {
   "name": "@jkremser/dosh",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Open shell in one of running containers",
   "main": "index.js",
   "repository": {
