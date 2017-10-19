@@ -9,12 +9,13 @@
   },
   "scripts": {
     "test": "mocha --reporter spec",
+    "start": "node start.js",
     "lint": "[ -f ./node_modules/.bin/eslint ] && ./node_modules/.bin/eslint index.js lib/**.js test",
     "lint-fix": "[ -f ./node_modules/.bin/eslint ] && ./node_modules/.bin/eslint index.js --fix lib/**.js test",
     "cover": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec test/*"
   },
   "bin": {
-    "dosh": "./index.js"
+    "dosh": "start.js"
   },
   "keywords": [
     "docker",
@@ -26,7 +27,7 @@
   "author": "Jiri Kremser",
   "license": "Apache-2.0",
   "engines": {
-    "node": ">=4.3.2"
+    "node": ">= 4.3.2"
   },
   "devDependencies": {
     "chai": "^4.1.2",

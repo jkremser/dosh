@@ -11,7 +11,7 @@ const figlet = require('figlet');
 
 const printVersion = () => console.log(version);
 
-const parseArgs = () => {
+const main = () => {
   try {
     const options = commandLineArgs(optionDefinitions);
     if (_.isEmpty(options)) {
@@ -23,7 +23,7 @@ const parseArgs = () => {
           }
         )
       ));
-      tui.show();
+      tui.all();
     } else if (options.version) {
       printVersion();
     } else if (options.help) {
@@ -36,4 +36,7 @@ const parseArgs = () => {
   }
 };
 
-parseArgs();
+module.exports = {
+  main,
+  version
+};

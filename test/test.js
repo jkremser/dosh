@@ -3,46 +3,48 @@
 'use strict';
 
 const expect = require('chai').expect;
-const numFormatter = require('../index');
+const dosh = require('../index');
+const desiredVersion = require('../package.json').version;
 
-describe('#numFormatter', () => {
-  it('should convert single digits', () => {
-    const result = numFormatter(1);
-    expect(result).to.equal('1');
+// todo: https://www.npmjs.com/package/@evolopment/chai-process
+
+describe('#dosh', () => {
+  it('with -v param should not fail', () => {
+    const bak = process.argv;
+    process.argv = ['', '', '-v'];
+    expect(dosh.main).to.not.throw();
+    process.argv = bak;
   });
 
-  it('should convert double digits', () => {
-    const result = numFormatter(12);
-    expect(result).to.equal('12');
+  it('with --version param should not fail', () => {
+    const bak = process.argv;
+    process.argv = ['', '', '--version'];
+    expect(dosh.main).to.not.throw();
+    process.argv = bak;
   });
 
-  it('should convert triple digits', () => {
-    const result = numFormatter(123);
-    expect(result).to.equal('123');
+  it('with -h param should not fail', () => {
+    const bak = process.argv;
+    process.argv = ['', '', '-h'];
+    expect(dosh.main).to.not.throw();
+    process.argv = bak;
   });
 
-  it('should convert 4 digits', () => {
-    const result = numFormatter(1234);
-    expect(result).to.equal('1,234');
+  it('with --help param should not fail', () => {
+    const bak = process.argv;
+    process.argv = ['', '', '--help'];
+    expect(dosh.main).to.not.throw();
+    process.argv = bak;
   });
 
-  it('should convert 5 digits', () => {
-    const result = numFormatter(12345);
-    expect(result).to.equal('12,345');
-  });
+  // it('with --sdf param should fail', () => {
+  //   const bak = process.argv
+  //   process.argv = ['', '', '--sdf'];
+  //   expect(dosh.main).to.throw();
+  //   process.argv = bak
+  // });
 
-  it('should convert 6 digits', () => {
-    const result = numFormatter(123456);
-    expect(result).to.equal('123,456');
-  });
-
-  it('should convert 7 digits', () => {
-    const result = numFormatter(1234567);
-    expect(result).to.equal('1,234,567');
-  });
-
-  it('should convert 8 digits', () => {
-    const result = numFormatter(12345678);
-    expect(result).to.equal('12,345,678');
+  it('version should correspond', () => {
+    expect(dosh.version).to.be.equal(desiredVersion);
   });
 });
