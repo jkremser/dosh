@@ -1,18 +1,39 @@
 'use strict';
 
-// const optionDefinitions = require('./lib/options');
 const usage = require('./lib/usage');
-// const exec = require('child_process').exec;
-// const execSync = require('child_process').execSync;
-// const spawn = require('child_process').spawn;
-// const path = require('path');
+const tui = require('./lib/tui');
+const optionDefinitions = require('./lib/options');
+const _ = require('lodash');
+const chalk = require('chalk');
+const version = require('./package.json').version;
+const commandLineArgs = require('command-line-args');
+const figlet = require('figlet');
 
-usage.printUsage();
+const printVersion = () => console.log(version);
 
-try {
-  // spawn("docker", ["exec", "-it", "459147ca0a6c", "/bin/bash"], {stdio : "inherit"});
-} catch (e) {
-  console.log(e);
-}
+const parseArgs = () => {
+  try {
+    const options = commandLineArgs(optionDefinitions);
+    if (_.isEmpty(options)) {
+      console.log('\x1B[2J');
+      console.log(
+        chalk.yellow(
+          figlet.textSync('dosh', {
+            horizontalLayout: 'fitted'
+          }
+        )
+      ));
+      tui.show();
+    } else if (options.version) {
+      printVersion();
+    } else if (options.help) {
+      usage.printUsage();
+    }
+  } catch (err) {
+    console.log(`\n${chalk.red(err.message)}`);
+    usage.printUsage();
+    process.exit(1);
+  }
+};
 
-module.exports = (number, locale) => number.toLocaleString(locale);
+parseArgs();

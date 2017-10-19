@@ -50,6 +50,8 @@
     "chalk": "^2.2.0",
     "command-line-args": "^4.0.7",
     "command-line-usage": "^4.0.1",
-    "inquirer": "^3.3.0"
+    "figlet": "^1.2.0",
+    "inquirer": "^3.3.0",
+    "lodash": "^4.17.4"
   }
 }
