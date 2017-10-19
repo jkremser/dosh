@@ -1,0 +1,17 @@
+{
+  "name": "@jkremser/dosh",
+  "version": "1.0.0",
+  "description": "Open shell in one of running containers",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter nyan"
+  },
+  "author": "Jiri Kremser",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "coveralls": "^3.0.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^4.0.1"
+  }
+}
