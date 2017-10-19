@@ -17,7 +17,7 @@ sudo npm install -g @jkremser/dosh
 dosh
 ```
 
-[![asciicast](https://asciinema.org/a/143174.png)](https://asciinema.org/a/143174)
+[![asciicast](https://asciinema.org/a/143174.png)](https://asciinema.org/a/143174?autoplay=1)
 
 ## Tests
 
