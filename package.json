@@ -4,7 +4,8 @@
   "description": "Open shell in one of running containers",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --reporter nyan"
+    "test": "mocha --reporter nyan",
+    "cover": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec test/*"
   },
   "author": "Jiri Kremser",
   "license": "Apache-2.0",
