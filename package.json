@@ -10,6 +10,7 @@
   "scripts": {
     "test": "mocha --reporter nyan",
     "lint": "[ -f ./node_modules/.bin/eslint ] && ./node_modules/.bin/eslint index.js lib/**.js test",
+    "lint-fix": "[ -f ./node_modules/.bin/eslint ] && ./node_modules/.bin/eslint index.js --fix lib/**.js test",
     "cover": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec test/*"
   },
   "bin": {
