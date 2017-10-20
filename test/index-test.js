@@ -36,12 +36,12 @@ describe('#dosh index.js', () => {
     process.argv = bak;
   });
 
-  // it('with --sdf param should fail', () => {
-  //   const bak = process.argv
-  //   process.argv = ['', '', '--sdf'];
-  //   expect(dosh.main).to.throw();
-  //   process.argv = bak
-  // });
+  xit('with --sdf param should fail', () => {
+    const bak = process.argv
+    process.argv = ['', '', '--sdf'];
+    expect(dosh.main).to.throw();
+    process.argv = bak
+  });
 
   it('version should correspond', () => {
     expect(dosh.version).to.be.equal(desiredVersion);

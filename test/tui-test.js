@@ -45,7 +45,7 @@ describe('#tui', () => {
     });
 
     describe('all() method should', () => {
-      it('print the container', (done) => {
+      xit('print the container', (done) => {
         const proc = spawn('node', ['../lib/tui-show.js'], { stdio: [null, null, null] });
         proc.stdout.pipe(process.stdout);
         setTimeout(() => {
