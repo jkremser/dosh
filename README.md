@@ -7,6 +7,8 @@ Dosh
 ====
 Very simple interactive tool that opens `/bin/bash` in one of the currently running Docker containers. It is a convenient way to run `docker exec -ti <hash> /bin/bash`.
 
+This tool assumes that `docker` can be run whithout sudo.
+
 ## Installation
 
 ```
@@ -17,8 +19,7 @@ sudo npm install -g @jkremser/dosh
 ```bash
 dosh
 ```
-
-[![asciicast](https://asciinema.org/a/143174.png)](https://asciinema.org/a/143174?autoplay=1&rows=35)
+<a href="https://asciinema.org/a/143174?autoplay=1&rows=35"><img src="https://asciinema.org/a/143174.png" width="600" ></a>
 
 ## Tests
 
