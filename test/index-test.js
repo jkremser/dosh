@@ -1,4 +1,5 @@
 /* eslint-env mocha */
+/* eslint-disable */
 
 'use strict';
 
@@ -6,9 +7,7 @@ const expect = require('chai').expect;
 const dosh = require('../index');
 const desiredVersion = require('../package.json').version;
 
-// todo: https://www.npmjs.com/package/@evolopment/chai-process
-
-describe('#dosh', () => {
+describe('#dosh index.js', () => {
   it('with -v param should not fail', () => {
     const bak = process.argv;
     process.argv = ['', '', '-v'];
