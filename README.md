@@ -5,6 +5,7 @@
 
 Dosh
 ====
+Very simple interactive tool that opens `/bin/bash` in one of the currently running Docker containers. It is a convenient way to run `docker exec -ti <hash> /bin/bash`.
 
 ## Installation
 
