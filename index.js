@@ -14,7 +14,7 @@ const printVersion = () => console.log(version);
 const main = () => {
   try {
     const options = commandLineArgs(optionDefinitions);
-    if (_.isEmpty(options)) {
+    if (_.isEmpty(options) || options.root) {
       console.log('\x1B[2J');
       console.log(
         chalk.yellow(
@@ -23,7 +23,7 @@ const main = () => {
           }
         )
       ));
-      tui.all();
+      tui.all(options.root);
     } else if (options.version) {
       printVersion();
     } else if (options.help) {
