@@ -12,7 +12,8 @@
     "start": "node start.js",
     "lint": "[ -f ./node_modules/.bin/eslint ] && ./node_modules/.bin/eslint index.js lib/**.js test",
     "lint-fix": "[ -f ./node_modules/.bin/eslint ] && ./node_modules/.bin/eslint index.js --fix lib/**.js test",
-    "cover": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec test/*"
+    "cover-coverall": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec test/*",
+    "cover-nyc": "node_modules/nyc/bin/nyc.js --reporter=lcov node_modules/mocha/bin/_mocha"
   },
   "bin": {
     "dosh": "start.js"
@@ -45,7 +46,8 @@
     "inquirer-test": "^1.0.5",
     "istanbul": "^0.4.5",
     "istanbul-combine": "^0.3.0",
-    "mocha": "^4.0.1"
+    "mocha": "^4.0.1",
+    "nyc": "^11.2.1"
   },
   "bugs": {
     "url": "https://github.com/Jiri-Kremser/dosh/issues"
