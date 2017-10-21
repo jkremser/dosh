@@ -13,7 +13,7 @@
     "lint": "[ -f ./node_modules/.bin/eslint ] && ./node_modules/.bin/eslint index.js lib/**.js test",
     "lint-fix": "[ -f ./node_modules/.bin/eslint ] && ./node_modules/.bin/eslint index.js --fix lib/**.js test",
     "cover-coverall": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec test/*",
-    "cover-nyc": "node_modules/nyc/bin/nyc.js --reporter=lcov node_modules/mocha/bin/_mocha"
+    "cover-nyc": "node_modules/nyc/bin/nyc.js --reporter=text --reporter=lcov node_modules/mocha/bin/_mocha"
   },
   "bin": {
     "dosh": "start.js"

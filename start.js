@@ -1,4 +1,5 @@
 #!/usr/bin/env node
 
 const index = require('./index');
-index.main();
+const returnCode = index.main();
+process.exit(returnCode);

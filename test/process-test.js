@@ -10,6 +10,7 @@ const chaiProcess = require('@evolopment/chai-process');
 const chaiAsPromised = require('chai-as-promised');
 
 const spawn = chaiProcess.spawn;
+const execSync = require('child_process').execSync;
 const cwd = path.dirname(module.filename);
 
 chai.use(chaiProcess);
@@ -18,6 +19,10 @@ chai.use(chaiAsPromised);
 before(() => process.chdir(cwd));
 
 describe('#process', () => {
+  before(() => {
+    execSync('docker kill `docker ps -q` &> /dev/null || true');
+  });
+
   it('`node start.js` should return zero exit code', () => {
     return expect(spawn('node', ['../start.js'])).to.eventually.succeed;
   });

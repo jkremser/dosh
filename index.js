@@ -24,16 +24,20 @@ const main = () => {
         )
       ));
       tui.all(options.root);
+      return 0;
     } else if (options.version) {
       printVersion();
+      return 0;
     } else if (options.help) {
       usage.printUsage();
+      return 0;
     }
   } catch (err) {
     console.log(`\n${chalk.red(err.message)}`);
     usage.printUsage();
-    process.exit(1);
+    return 1;
   }
+  return 0;
 };
 
 module.exports = {

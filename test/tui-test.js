@@ -12,6 +12,7 @@ const chaiAsPromised = require('chai-as-promised');
 const cspawn = chaiProcess.spawn;
 const cexec = chaiProcess.exec;
 const spawn = require('child_process').spawn;
+const execSync = require('child_process').execSync;
 const cwd = path.dirname(module.filename);
 
 const i = require('inquirer-test');
@@ -22,6 +23,10 @@ chai.use(chaiAsPromised);
 before(() => process.chdir(cwd));
 
 describe('#tui', () => {
+  before(() => {
+    execSync('docker kill `docker ps -q` &> /dev/null || true');
+  });
+
   it('exporting the modules should not fail', () => {
     return expect(cspawn('node', ['../lib/tui.js'])).to.eventually.succeed;
   });
@@ -41,18 +46,23 @@ describe('#tui', () => {
   describe('with one running container', () => {
 
     before(() => {
-        cexec('docker run busybox sleep 2');
+        cexec('docker run busybox sleep 1.5');
     });
 
     describe('all() method should', () => {
-      xit('print the container', (done) => {
-        const proc = spawn('node', ['../lib/tui-show.js'], { stdio: [null, null, null] });
+      it('print the container', (done) => {
+        const proc = spawn('node', ['../lib/tui-show.js'], { stdio: ['pipe', 'pipe', 'pipe'] });
         proc.stdout.pipe(process.stdout);
         setTimeout(() => {
           const ENTER = '\x0D';
           proc.stdin.setEncoding('utf-8');
           proc.stdin.write(ENTER);
           proc.stdin.end();
+          // process.stdin.setEncoding('utf-8');
+          // process.stdin.write(ENTER);
+          // process.stdin.end();
+
+          proc.kill('SIGINT');
           done();
         }, 500);
       });
