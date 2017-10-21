@@ -2,4 +2,7 @@
 
 const index = require('./index');
 const returnCode = index.main();
-process.exit(returnCode);
+
+if (returnCode !== 0) {
+  process.exit(returnCode);
+}

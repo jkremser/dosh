@@ -43,6 +43,7 @@ describe('#tui', () => {
     });
 
     it('runBash(hash) should be runnable', () => {
+      execSync(`node -e "require('../lib/tui.js').runBash('asdf')"`);
       return expect(cexec(`node -e "require('../lib/tui.js').runBash('asdf')"`)).to.eventually.succeed;
     });
   });
