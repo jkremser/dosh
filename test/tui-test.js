@@ -41,6 +41,10 @@ describe('#tui', () => {
         return expect(cexec(`node -e "require('../lib/tui.js').all()"`)).to.eventually.stdout().contain('No containers are running');
       });
     });
+
+    it('runBash(hash) should be runnable', () => {
+      return expect(cexec(`node -e "require('../lib/tui.js').runBash('asdf')"`)).to.eventually.succeed;
+    });
   });
 
   describe('with one running container', () => {
@@ -58,10 +62,6 @@ describe('#tui', () => {
           proc.stdin.setEncoding('utf-8');
           proc.stdin.write(ENTER);
           proc.stdin.end();
-          // process.stdin.setEncoding('utf-8');
-          // process.stdin.write(ENTER);
-          // process.stdin.end();
-
           proc.kill('SIGINT');
           done();
         }, 500);

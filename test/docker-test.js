@@ -32,9 +32,9 @@ describe('#docker ps', () => {
 
   describe('with three running containers should', () => {
     before(() => {
-        cexec('docker run busybox sleep 1.2');
-        cexec('docker run busybox sleep 1.1');
-        cexec('docker run busybox sleep 1.0');
+        cexec('docker run busybox sleep 3.2');
+        cexec('docker run busybox sleep 3.1');
+        cexec('docker run busybox sleep 3.0');
     });
 
     it('not throw any exceptions', () => {
@@ -46,6 +46,24 @@ describe('#docker ps', () => {
         expect(d.ps()).to.be.an('array').that.has.length(3);
         done();
       }, 300);
+    });
+
+    it('allow to inspect one', (done) => {
+      setTimeout(()=> {
+        const containers = d.ps();
+        const proc = d.inspect(containers[0].hash);
+        expect(proc.stderr).to.be.null;
+        done();
+      }, 100);
+    });
+
+    it('allow to inspect one with root access', (done) => {
+      setTimeout(()=> {
+        const containers = d.ps();
+        const proc = d.inspect(containers[0].hash, true);
+        expect(proc.stderr).to.be.null;
+        done();
+      }, 100);
     });
   });
 });

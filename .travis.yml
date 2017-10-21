@@ -9,6 +9,8 @@ node_js:
 
 install:
   - npm install
+
+  # pull the container so that it is available for tests
   - docker run busybox sleep 0.1
 
 script:
