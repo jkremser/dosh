@@ -9,6 +9,7 @@ node_js:
 
 install:
   - npm install
+  - docker run busybox sleep 0.1
 
 script:
   - npm run cover-nyc
