@@ -14,7 +14,7 @@ const printVersion = () => console.log(version);
 const main = () => {
   try {
     const options = commandLineArgs(optionDefinitions);
-    if (_.isEmpty(options) || options.root) {
+    if (_.isEmpty(options) || options.root || options.debug) {
       console.log('\x1B[2J');
       console.log(
         chalk.yellow(
@@ -23,7 +23,10 @@ const main = () => {
           }
         )
       ));
-      tui.all(options.root);
+      if (options.root || options.debug) {
+        console.log(chalk.green((options.debug ? '  debug ✔  ' : '') + '  root ✔'));
+      }
+      tui.all(options.root, options.debug);
       return 0;
     } else if (options.version) {
       printVersion();

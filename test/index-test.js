@@ -55,6 +55,20 @@ describe('#dosh index.js', () => {
     process.argv = bak;
   });
 
+  it('with -d param should not fail', () => {
+    const bak = process.argv;
+    process.argv = ['', '', '-d'];
+    expect(dosh.main).to.not.throw();
+    process.argv = bak;
+  });
+
+  it('with -d param should return 0', () => {
+    const bak = process.argv;
+    process.argv = ['', '', '-d'];
+    expect(dosh.main()).to.be.equal(0);
+    process.argv = bak;
+  });
+
   it('with no params should return 0', () => {
     const bak = process.argv;
     process.argv = ['', ''];
