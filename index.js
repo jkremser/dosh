@@ -24,7 +24,7 @@ const main = () => {
         )
       ));
       if (options.root || options.debug) {
-        console.log(chalk.green((options.debug ? '  debug ✔  ' : '') + '  root ✔'));
+        console.log(chalk.green(`${options.debug ? '  debug ✔  ' : ''}  root ✔`));
       }
       tui.all(options.root, options.debug);
       return 0;
